@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .App-logo {
@@ -14,7 +15,7 @@
   color: white;
 }
 
-.App-intro {
+.App-intro {  
   font-size: large;
 }
 
