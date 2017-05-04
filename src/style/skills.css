@@ -7,12 +7,15 @@
   font-family: 'Roboto Condensed', sans-serif;
   display: auto;
  }
- .badge-pill{
-    margin: 20px;
+
+ .bio {
+  margin: 10px;
   padding: 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: gray;
+  border-color: black;
   font-family: 'Roboto Condensed', sans-serif;
-  display: auto;
- }
+}
+.bio-details {
+     text-align: left;
+}

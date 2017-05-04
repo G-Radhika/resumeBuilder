@@ -4,7 +4,7 @@ import './../style/projects.css';
 class Projects extends Component {
   render() {
     return (     
-                <div className="projects">
+                <div className="container-fluid">
                     <div className="col"><h3>Projects: </h3></div>              
                 <div className="col-sm-4">
                     <img className="card-img-top" src="..." alt=" "/>

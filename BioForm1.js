@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+/*TO DO:
+1. On submit form should close just like 'X' button
+2.  */
 class BioForm extends Component {
     constructor(props) {
         super(props)
@@ -7,24 +9,25 @@ class BioForm extends Component {
             showModal: false,
             value: ''
         };
-        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        console.log("in contructor");
+
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.nameValue });
-        this.setState({ value: event.target.locationValue });
-        this.setState({ value: event.target.summaryValue });
-    }
+   handleSubmit(e){
+		e.preventDefault()
 
-    handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.nameValue +
-            'A name was submitted: ' + this.state.locationValue +
-            'A name was submitted: ' + this.state.summaryValue);
-        event.preventDefault();
-    }
+		this.props.onFormSubmit({
+            name: this.refs.name.value,
+            location: this.refs.location.value,
+            summary: this.refs.summary.value,
+            photo: "photo_default.png"
+        });
 
+        this.refs.name.value = ''
+        this.refs.location.value = ''
+        this.refs.summary.value = ''
+        this.refs.photo.value = ''
+	}
 
     render() {
 
@@ -48,30 +51,31 @@ class BioForm extends Component {
                                     <div className="form-group row">
                                         <label className="col-2 col-form-label">Name: </label>
                                         <div className="col-10">
-                                            <input className="form-control" type="text" value={this.state.nameValue} onChange={this.handleChange} placeholder="Enter your name..." />
+                                            <input className="form-control" type="text" value={this.state.nameValue} refs="name" placeholder="Enter your name..." />
                                         </div>
                                     </div>
-
                                     <div className="form-group row">
                                         <label className="col-2 col-form-label">Location: </label>
                                         <div className="col-10">
-                                            <input className="form-control" type="text" value={this.state.locationValue} onChange={this.handleChange} placeholder="Where do you live..." />
+                                            <input className="form-control" type="text" value={this.state.locationValue} refs="location" placeholder="Place..." />
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-2 col-form-label">Summary: </label>
                                         <div className="col-10">
-                                            <textarea className="form-control" rows="3" value={this.state.summaryValue} onChange={this.handleChange} placeholder="Discribe your work in few lines..."></textarea>
+                                            <textarea className="form-control" rows="3" value={this.state.summaryValue} refs="summary" placeholder="Discribe your work in few lines..."></textarea>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-2 col-form-label">Photo: </label>
+                                        <label className="col-2 col-form-label">Profile Image: </label>
                                         <div className="col-10">
                                             <input type="file" className="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" />
+                                            <img src="" alt=""/>
                                             <small id="fileHelp" className="form-text text-muted">Minimum size: 120px by 120px. Max 5MB</small>
                                         </div>
                                     </div>
-                                    <input aria-hidden="true" type="submit" value="Submit" />
+
+                                    <input type="submit" value="Submit"  /> 
                                 </form>
                             </div>
 
